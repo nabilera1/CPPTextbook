@@ -147,17 +147,28 @@ int main()
 }
 
 
-
-
-000
-학습내용 : 상수 배우기
+007
+학습내용 : 자료형 이해하기
 
 #include<iostream>
+#include<string>
 using namespace std;
 
 int main()
 {
+	char character = 'C';
+	int integer = 100;
+	double precision = 3.141592;
+	bool is_true = true;
+	string word = "Hello, World"l;
 
+	cout << "char : " << character << endl;
+	cout << "int : " << integer << endl;
+	cout << "double : " << precision << endl;
+	cout << "bool : " << bool << endl;
+	cout << "string : " << word << endl;
+
+	
 
 	return 0;
 }
@@ -166,15 +177,20 @@ int main()
 
 
 
-000
-학습내용 : 상수 배우기
+008
+학습내용 : 조건문 배우기
 
 #include<iostream>
 using namespace std;
 
 int main()
 {
-
+	int x = 10;
+	int y = 1;
+	if (x > y)
+		cout << "x는 y보다 큽니다." << endl;
+	else
+		cout << "x는 y보다 작습니다." << endl;
 
 	return 0;
 }
@@ -183,16 +199,25 @@ int main()
 
 
 
-000
-학습내용 : 상수 배우기
+009
+학습내용 : 순환문 배우기(for)
 
 #include<iostream>
 using namespace std;
 
 int main()
 {
+	int sum1 = 0;
+	int sum2 = 0;
+	int one = 1;
+	int two = 2;
 
-
+	for (int i = 0; i < 5:i++) 
+	{
+		sum1 += one;
+		sum2 += two;
+	}
+	cout << "합산 결과 : " << sum1 << "," << sum2 << endl;
 	return 0;
 }
 
