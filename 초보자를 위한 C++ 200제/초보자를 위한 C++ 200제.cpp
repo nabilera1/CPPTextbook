@@ -224,15 +224,71 @@ int main()
 
 
 
-000
-학습내용 : 상수 배우기
+010
+학습내용 : 배열[]
 
 #include<iostream>
 using namespace std;
 
 int main()
 {
+	const int kArraySize = 3;
+	int founding[kArraySize];
+	founding[0] = 918;
+	founding[1] = 1392;
+	founding[2] = 1948;
+	cout << "고려 건국 연도 : " << founding[0] << endl;
+	cout << "조선 건국 연도 : " << founding[1] << endl;
+	cout << "한국 건국 연도 : " << founding[2] << endl;
+	return 0;
+}
 
+
+배열에는 같은 자료형 데이터를 여러 개 담을 수 있다.
+최근에는 vector, list, tuple과 같은 컨테이너가 많이 사용된다.
+컨테이너가 배열보다 생산성이 높다.
+
+
+011
+학습내용 : 함수()
+
+#include<iostream>
+using namespace std;
+
+void Minus(const int x, const int y)
+{
+	cout << "x-y=" << x - y << endl;
+}
+void Plus(const int x, const int y)
+{
+	return x + y;
+}
+int main()
+{
+	Minus(10, 5);
+	cout << "x+y=" << Plus(2, 6) << endl;
+	return 0;
+}
+
+
+
+
+012
+학습내용 : 주석 배우기
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	// 출력하지 않을 코드
+	//cout << "여몽전쟁 영웅 김윤후, 처인성 전투 1232년" << endl;
+
+	// 0 부터 9까지 출력합니다.
+	/*for (int i = 0; i < 10; i++)
+		cout << i << ", ";
+
+	cout << endl;*/
 
 	return 0;
 }
@@ -241,15 +297,45 @@ int main()
 
 
 
-000
-학습내용 : 상수 배우기
 
+
+013
+학습내용 : 네임스페이스 배우기;
 #include<iostream>
 using namespace std;
 
+namespace silla
+{
+	int year = 935;
+
+	void CentralArea()
+	{
+		cout << "경상도" << endl;
+	}
+}
+
+namespace baekjae
+{
+	int year = 660;
+
+	void CentralArea()
+	{
+		cout << "충청도" << endl;
+	}
+}
+
+//using namespace silla;
+using namespace baekjae;
+
 int main()
 {
-
+	cout << "신라 중심지 : ";
+	silla::CentralArea();
+	cout << "신라 멸망연도 : " << silla::year << endl;
+	cout << "백제 중심지 : ";
+	baekjae::CentralArea();
+	//cout << "백제 멸망연도 : " << baekjae::year << endl;
+	cout << "백제 멸망연도 : " << year << endl;
 
 	return 0;
 }
@@ -257,56 +343,10 @@ int main()
 
 
 
-000
-학습내용 : 상수 배우기
-
-#include<iostream>
-using namespace std;
-
-int main()
-{
 
 
-	return 0;
-}
-
-
-
-
-
-000
-학습내용 : 상수 배우기
-
-#include<iostream>
-using namespace std;
-
-int main()
-{
-
-
-	return 0;
-}
-
-
-
-
-
-000
-학습내용 : 상수 배우기;
-
-#include<iostream>
-using namespace std;
-
-int main()
-{
-
-
-	return 0;
-}
-
-
-000
-학습내용 : 상수 배우기;
+014
+학습내용 : 라이브러리 참조 방법 배우기;
 
 #include<iostream>
 using namespace std;
