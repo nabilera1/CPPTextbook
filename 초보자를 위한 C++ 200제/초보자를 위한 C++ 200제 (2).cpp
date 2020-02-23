@@ -136,60 +136,276 @@ int main()
 
 
 
-018
-학습내용 : 정수형 변수 이해하기;
+020
+학습내용 : 논리형 bool 변수 이해하기;
 #include <iostream>
 
+using namespace std;
 
+int main()
+{
+	int x = 10;
+	int y = 6;
 
+	bool is_true = false;
 
+	if (x > y)
+	{
+		is_true = true;
+	}
+	else
+	{
+		is_true = false;
+	}
 
-018
-학습내용 : 정수형 변수 이해하기;
+	if (is_true == true)
+	{
+		cout << "x는 y보다 큽니다" << endl;
+	}
+	else
+	{
+		cout << "x는 y보다 작습니다" << endl;
+	}
 
-
-
-
-
-
-018
-학습내용 : 정수형 변수 이해하기;
-
-
-
-
-
-
-018
-학습내용 : 정수형 변수 이해하기;
-
-
-
-
-
-
-018
-학습내용 : 정수형 변수 이해하기;
-
-
-
-
-
-
-018
-학습내용 : 정수형 변수 이해하기;
+	return 0;
+};
 
 
 
 
 
 
-018
-학습내용 : 정수형 변수 이해하기;
+021
+학습내용 : 대입연산자 이해하기;
 #include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x = 1;
+	int y = 9;
+
+	int z = x + y;
+
+	double i = 1.2;
+	double j = 2.3;
+
+	double k = i + j;
+
+	cout << "x + y = " << z << endl;
+	cout << "i + j = " << k << endl;
+
+	return 0;
+};
+
+//왼쪽에 위치하는 변수 L-value, = 대입연산자
+
+
+
+022
+학습내용 : 부호 연산자 이해하기;
 #include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x = 1;
+	int y = -1;
+	int z = -2;
+
+	cout << "1 + (-1) = " << x + y << endl;
+	cout << "-1 + -2 = " << y + z << endl;
+
+	return 0;
+};
+
+
+
+
+
+023
+학습내용 : 증감 연산자 이해하기;
 #include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x = 1;
+
+	cout << "x = " << x++ << endl;
+	cout << "x = " << x++ << endl;
+	cout << "x = " << ++x << endl;
+	cout << "x = " << x-- << endl;
+	cout << "x = " << x-- << endl;
+	cout << "x = " << --x << endl;
+
+	return 0;
+};
+
+
+
+
+024
+학습내용 : 관계 연산자 이해하기;
+
 #include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string publisher = "정보문화사";
+	string language = "C++";
+
+	int x = 10;
+	int y = 10;
+
+	if (publisher != language)
+		cout << "두 문장은 같지 않습니다." << endl;
+	else
+		cout << "두 문장은 같습니다." << endl;
+
+	if (x >= y)
+		cout << "x는 y보다 크거나 같습니다" << endl;
+	else
+		cout << "x는 y보다 크거나 같지 않습니다" << endl;
+
+	if (x <= 20)
+		cout << "x는 20보다 작거나 같습니다" << endl;
+	else
+		cout << "x는 20보다 작거나 같지 않습니다" << endl;
+
+	return 0;
+};
+
+
+
+
+
+
+
+025
+학습내용 : 논리 연산자 이해하기;
 #include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x = 10;
+	int y = 20;
+
+	bool is_x = true;
+	bool is_y = false;
+
+	if (is_x == true && is_y == true)
+		cout << "is_x && is_y = " << "true" << endl;
+	else
+		cout << "is_x && is_y = " << "false" << endl;
+
+	if (x == 10 || is_x == false)
+		cout << "x가 10이거나 is_x가 true입니다" << endl;
+	else
+		cout << "x는 10이 아니며 is_x도 false가 아닙니다" << endl;
+
+	if (!is_y)
+		cout << "is_y 원래 값은 false입니다" << endl;
+	else
+		cout << "is_y 원래 값은 true입니다" << endl;
+
+	return 0;
+};
+
+
+
+
+
+
+026
+학습내용 : 조건부 삼항 연산자 이해하기;
 #include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int x = 1;
+	int y = 2;
+	int z = 0;
+
+	z = x > y ? x : y;
+
+	cout << "x와 y중 더 큰 값은 : " << z << endl;
+
+	return 0;
+};
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
+
+
+
+000
+학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+
 
