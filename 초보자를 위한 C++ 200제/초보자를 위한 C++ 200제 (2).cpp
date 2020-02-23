@@ -1,14 +1,13 @@
-﻿C++는 C언어와 함께 마지막까지 살아 남을 언어로 꼽힙니다.
-이 책은 C++개발자가 되기 위한 기본 지식을 먼저 소개합니다.
-그리고 현업에서 유용하게 접목할 수 있는 C++11의 Algorithm 항목을 설명합니다.
-소스를 직접 타이핑하고 겨로가를 확인하시기 바랍니다.
+﻿
 
 정보문화사 http://www.infopub.co.kr
 저자 블로그 http://codingcoding.tistory.com
 저자 정오표 https://codingcoding.tistory.com/850
 
-
-
+깃허브 : https://github.com/nabilera1/CPPTextbook/tree/master/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20C%2B%2B%20200%EC%A0%9C
+: stash - commit - push
+* 스태시 : 요술 책갈피, 안전하게 보관하기, 임시로 저장
+* https ://opentutorials.org/module/2676/15332
 
 
 016
