@@ -348,29 +348,66 @@ int main()
 014
 학습내용 : 라이브러리 참조 방법 배우기;
 
-#include<iostream>
+#include <파일 이름>   기본 라이브러리 사용
+#include "파일 이름"   사용자 라이브러리 사용
+
+vector는 C++ 표준 라이브러리
+
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
 int main()
 {
+	vector<int> exam;
+	exam.push_back(10);
+	exam.push_back(20);
+	exam.push_back(30);
 
+	for (int i = 0, size = exam.size(); i < size; i++)
+	{
+		cout << "벡터 값 : " << exam.at(i) << endl;
+	}
 
 	return 0;
 }
 
 
-000
-학습내용 : 상수 배우기;
 
-#include<iostream>
+015
+학습내용 : 스코핑룰(유효범위,scope) 이해하기;
+
+#include <iostream>
+
 using namespace std;
+
+int x = 10;  //전역변수
+
+int Func1()
+{
+	int y = x + 10;
+
+	return y;
+}
+
+int Func2()
+{
+	int x = 100;
+
+	return x;
+}
 
 int main()
 {
-
+	cout << "y = " << Func1() << endl;
+	cout << "x = " << Func2() << endl;
+	cout << "x = " << x << endl;
 
 	return 0;
 }
+
+
 
 
 000
