@@ -347,42 +347,175 @@ int main()
 
 
 
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
+027
+학습내용 : 쉼표 연산자 이해하기;
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int goguryeo = 37, baekjae = 18, silla = 57;
+
+	printf("삼국 건국연도\n");
+	printf("고구려 bc%d년, 백제 bc%d년, 신라 bc%d년\n", goguryeo, baekjae, silla);
+
+	return 0;
+};
+
+//한 라인에 코드가 길어지면 가독성의 문제가 있으므로 신중히 판단
 
 
 
 
+028
+학습내용 : 비트 연산자 이해하기;
+//컴퓨터는 0과 1, 두 가지 신호로 동작한다.
+//8비트는 1바이트, 256가지를 표현할 수 있다.
+#include <iostream>
+#include <bitset>
+//char, int로 비트 연산을 하는 것보다 bitset 컨테이너로 사용하자.
+using namespace std;
+
+int main()
+{
+	bitset<8> bit1; //변수를 8비트로 지정
+	bit1.reset(); //0000 0000
+	bit1 = 127;  //0111 1111
+
+	bitset<8> bit2;
+	bit2.reset();
+	bit2 = 0x20; // 32, 0010 0000
+
+
+	bitset<8> bit3 = bit1 & bit2;
+	bitset<8> bit4 = bit1 | bit2;
+	bitset<8> bit5 = bit1 ^ bit2;
+	bitset<8> bit6 = ~bit1;
+	bitset<8> bit7 = bit2 << 1;
+	bitset<8> bit8 = bit2 >> 1;
+
+	cout << "bit1 & bit2 : " << bit3 << ", " << bit3.to_ulong() << endl;
+	cout << "bit1 | bit2 : " << bit4 << ", " << bit4.to_ulong() << endl;
+	cout << "bit1 ^ bit2 : " << bit5 << ", " << bit5.to_ulong() << endl;
+	cout << "~bit1: " << bit6 << ", " << bit6.to_ulong() << endl;
+	cout << "bit2 << 1: " << bit7 << ", " << bit7.to_ulong() << endl;
+	cout << "bit2 >> 1: " << bit8 << ", " << bit8.to_ulong() << endl;
+
+	return 0;
+};
+
+//
+//bit1& bit2 : 00100000, 32
+//bit1 | bit2 : 01111111, 127
+//bit1 ^ bit2 : 01011111, 95
+//~bit1 : 10000000, 128
+//bit2 << 1 : 01000000, 64
+//bit2 >> 1 : 00010000, 16
 
 
 
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
+029
+학습내용 : 캐스트 연산자 이해하기;
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x = 2;
+	double y = 4.4;
+
+	int i = static_cast<int>(y / x);
+	int j = (int)y / x;
+	double k = y / x;
+
+	cout << "4.4 / 2 = (static_cast<int>) " << i << endl;
+	cout << "4.4 / 2 = (int) " << j << endl;
+	cout << "4.4 / 2 = " << k << endl;
+
+	return 0;
+};
+
+
+//c언어 스타일의 형변환은 아무 조건도 없이 무작정 변경하는 단점
+//변경할 수 없을 때도 변경을 시도하여 문제가 발생하기도 합니다.
+//C++에서는 4가지 자료형 변환 연산자를 제공
+//static_cast<> : 가장 기본적인 캐스트 연산 방법
+//dynamic_cast<> : 객체지향 언어의 다형성을 이용하여 모호한 타입 캐스팅 오류를 막아줌
+//const_cast<> : 자료형이 갖고 있는 상수 속성 제거
+//reinterpret_cast<> : 포인터 타입끼리 변환할 수 있게 해줌
+
+
+
+030
+학습내용 : 명시적 변환 이해하기;
+//static_cast<> 를 이용하지 않고 명시적으로 자료형을 변경하는 방법
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number1 = 65;
+	double number2 = 23.4;
+
+	int number3 = int(number2);
+	double number4 = double(number1 / number2);
+
+	char ch = char(number1);
+
+	cout << "number1 : " << number1 << endl;
+	cout << "number2 : " << number2 << endl;
+	cout << "number3 : " << number3 << endl;
+	cout << "number4 : " << number4 << endl;
+	cout << "ch : " << ch << endl;
+
+	return 0;
+}
+
+
+	//number1: 65
+	//number2 : 23.4
+	//number3 : 23
+	//number4 : 2.77778
+	//ch : A
 
 
 
 
+031
+학습내용 : sizeof 이해하기;
 
+#include <iostream>
 
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
+using namespace std;
 
+class Temp {
+	int no;      //4byte
+	bool is_on;  //1byte
+};
 
+int main()
+{
+	cout << "char 크기 : " << sizeof('p') << endl;    //1
+	cout << "int 크기 : " << sizeof(10) << endl;      //4
+	cout << "double 크기 : " << sizeof(10.0) << endl; //8
+	cout << "클래스 크기 : " << sizeof(Temp) << endl; //8 ??
 
+	return 0;
+};
 
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
+//데이터 버스는 한 번에 4바이트 데이터를 담아 이동
+//4바이트 단위로 몇 번 움직이느냐에 따라 sizeof의 결과가 달라짐
+//Temp는 2번 이동 필요하여 8byte가 됨.
 
-
-
-
-
-
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
-
-
-
+//시스템 버스는 cpu, 메모리, 입력 장치, 출력 장치들끼리 데이터를 주고 받을 수 있도록 돕는다.
+//
+//
+//
 
 
 
