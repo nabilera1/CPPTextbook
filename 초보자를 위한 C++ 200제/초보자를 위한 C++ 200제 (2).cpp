@@ -513,31 +513,291 @@ int main()
 //Temp는 2번 이동 필요하여 8byte가 됨.
 
 //시스템 버스는 cpu, 메모리, 입력 장치, 출력 장치들끼리 데이터를 주고 받을 수 있도록 돕는다.
-//
-//
-//
-
-
-
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
 
 
 
 
+032
+학습내용 : 중첩 조건문 이해하기;
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number1 = 100;
+	int number2 = 6;
+
+	if (number1 < number2)
+		cout << "number2가 더 큽니다." << endl;
+	else if (number1 > number2)
+		cout << "number1이 더 큽니다." << endl;
+	else
+		cout << "number1과 number2는 같습니다." << endl;
+
+	if (number2 < 7)
+	{
+		if (number2 > 3)
+		{
+			if (number2 == 4)
+				cout << "number2은 4입니다" << endl;
+			else if (number2 == 5)
+				cout << "number2는 5입니다" << endl;
+			else
+				cout << "number2는 6입니다" << endl;
+		}
+		else
+		{
+			if (number2 == 3)
+				cout << "number2는 3입니다" << endl;
+			else if (number2 == 2)
+				cout << "number2는 2입니다" << endl;
+			else
+				cout << "number2는 1이하 입니다" << endl;
+		}
+	}
+
+	return 0;
+};
 
 
 
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
+
+
+033
+학습내용 : 중첩 조건문으로 가장 큰 수 찾기;
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int number1 = 100;
+	int number2 = 200;
+	int number3 = 300;
+
+	if (number1 > number2 && number1 > number3)
+		cout << "가장 큰 수 number1 : " << number1 << endl;
+	else if (number2 > number1 && number2 > number3)
+		cout << "가장 큰 수 number2 : " << number2 << endl;
+	else if (number3 > number1 && number3 > number2)
+		cout << "가장 큰 수 number3 : " << number3 << endl;
+	else
+		cout << "찾을 수 없습니다." << endl;
+
+	return 0;
+}
+
+
+
+
+
+034
+학습내용 : for continue break 이해하기;
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number = 7;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 3 == 0)
+			continue;
+		else if (i == number)
+			break;
+		else
+			cout << "현재 i 값 : " << i << endl;
+	}
+
+	return 0;
+};
+
+
+035
+학습내용 : 순환문(for)으로 특정 문자 개수 구하기;
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string str = "The Jin state was formed in southern Korea by the 3rd century BC";
+
+	char find = 'a';
+
+	int size = str.size();
+	int count = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (str[i] == find)
+			count++;
+	}
+
+	cout << "문장의 a 개수는 " << count << "개 입니다." << endl;
+
+	return 0;
+}
+
+
+
+
+036
+학습내용 : for문으로 홀수, 짝수 찾기;
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int data[10] = { 5, 19, 76, 3, 10, 89, 54, 43, 2, 17 };
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (data[i] % 2 == 0)
+			cout << i << " : " << data[i] << "는 짝수입니다." << endl;
+		else
+			cout << i << " : " << data[i] << "는 홀수입니다." << endl;
+	}
+
+	return 0;
+}
+
+
+037
+학습내용 : switch case break default 이해하기;
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number = 3;
+
+	switch (number)
+	{
+	case 1:
+		cout << "number 값은 1입니다." << endl;
+		break;
+	case 2:
+		cout << "number 값은 2입니다." << endl;
+		break;
+	case 3:
+		cout << "number 값은 3입니다." << endl;
+		break;
+	default:
+		cout << "number 값을 알 수 없습니다." << endl;
+		break;
+	}
+
+	return 0;
+};
 
 
 
 
 
 
-000
-학습내용 : 조건부 삼항 연산자 이해하기;
+038
+학습내용 : while continue break 이해하기;
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number = 0;
+
+	while (number < 10)
+	{
+		number++;
+
+		if (number % 3 == 0)
+			continue;
+		else
+			cout << "number 값 : " << number << endl;
+	}
+
+	return 0;
+};
+
+
+
+039
+학습내용 : do while continue break 이해하기;
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number = 0;
+
+	do {
+		number++;
+
+		if (number % 3 == 0)
+			continue;
+		else
+			cout << "number 값 : " << number << endl;
+
+	} while (number < 10);
+
+	return 0;
+};
+
+
+
+040
+학습내용 : 구구단 출력하기;
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int offset = 0;
+
+	for (int i = 1; i <= 15; i += offset)
+	{
+		for (int j = 1; j <= 9; j++)
+		{
+			cout << i << " * " << j << " = " << i * j;
+
+			for (int k = 0; k < offset; k++)
+			{
+				cout << "\t";
+				cout << (i + k + 1) << " * " << j << " = " << (i + k + 1) * j;
+			}
+
+			cout << endl;
+		}
+
+		cout << endl;
+
+		offset++;
+	}
+
+	return 0;
+}
+
 
 
 
