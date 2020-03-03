@@ -301,24 +301,101 @@ int main()
 
 
 050
-학습내용 :   이해하기;
+학습내용 : random_shuffle 이해하기;
+//#define randomize() srand((unsigned)time(NULL))
 
 
 
+#include <iostream>
+#include <random>
+#include <algorithm>
+#include <ctime>
 
+using namespace std;
+
+int main()
+{
+	string str1 = "1a2b3c4d5e6f7g8h9i";
+	string str2 = "republic of korea";
+	int data1[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	srand(static_cast<unsigned int>(time(NULL)));
+
+	random_shuffle(str1.begin(), str1.end());
+	random_shuffle(str2.begin(), str2.end());
+	random_shuffle(data1, data1 + 4);//0~3
+
+	cout << "== str1 ==" << endl;
+	for (auto i : str1)
+		cout << i << ", ";
+
+	cout << endl << "== str2 ==" << endl;
+	for (auto i : str2)
+		cout << i << ", ";
+
+	cout << endl << "== data1 ==" << endl;
+	for (auto i : data1)
+		cout << i << ", ";
+
+	return 0;
+}
+
+
+//== str1 ==
+//2, a, 5, 7, g, 6, h, 4, 8, f, 9, e, 3, d, 1, b, i, c,
+//== str2 ==
+//, o, f, k, o, c, l, e, p, r, e, , a, b, r, i, u,
+//== data1 ==
+//4, 3, 1, 2, 5, 6, 7, 8, 9, 10,
+
+//python의 경우
+//import random
+//list = ["korea", "japan", "china", "england", "canada"]
+//random.shuffle(list)
+//print(list) 
 
 
 
 
 
 000
-학습내용 :   이해하기;
+학습내용 :날짜와 시간을 문자열 변환 이해하기;
+//visual studio 2019에서는 _CRT_SECURE_NO_WARNINGS를 사용
+//또는 #pragma warning(disable:4996)
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <ctime>
+//#pragma warning(disable:4996)
+using namespace std;
+
+int main()
+{
+	time_t now = time(NULL);  //time_t 타입(정수)의 변수 now를 현재 시각으로 초기화
+	tm* ptm = localtime(&now);//tm 구조체 포인터 변수 ptm에 시간 정보 전달
+	//struct tm * localtime (const time_t * timer);
+
+	char buffer[64];
+	strftime(buffer, 64, "예제 만드는 지금은 %Y년 %m월 %d일, %H시 %M분 %S초입니다.(%p)\n", ptm);
+	//Y, m, d, H, M, S, p 등은 형식지정자이다. format에 맞게 쓰면 시간 정보가 나온다.
+	cout << buffer;
+
+	return 0;
+};
+
+//예제 만드는 지금은 2020년 03월 03일, 13시 52분 52초입니다.(PM)
 
 
 
 
-
-
+//http://blog.naver.com/PostView.nhn?blogId=pumpapapumpa&logNo=220262926082
+//http://www.cplusplus.com/reference/ctime/tm/
+//
+//유닉스와 POSIX 시스템에서는 time_t 를 정수 (통상적으로 32 또는 64 비트 정수) 
+//혹은 부동 소수점 형으로 정의하고 있다. 이 때, 이 값은 1970 년 1 월 1 일 자정 (UTC) 에서 부터 
+//현재 까지 흐른 초 수를 의미한다.
+//https://modoocode.com/113
+//시간 형식 지정자 https://modoocode.com/122
 
 
 
