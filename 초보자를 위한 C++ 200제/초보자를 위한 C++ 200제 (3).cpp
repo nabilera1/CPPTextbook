@@ -399,10 +399,40 @@ int main()
 
 
 
-000
-학습내용 :   이해하기;
+052
+학습내용 : 지나간 시간 알아내기;
+
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	time_t start = time(NULL);//시간 초기화
+	time_t finish = time(NULL);//시간 초기화
+
+	int pass_int = 1;
+
+	time(&start);//start에 실행시점 시간 저장
+
+	for (int i = 1; i < 10000; i++)
+	{
+		for (int j = 1; j < 1000000; j++)
+			pass_int += 1;  //덧셈 연산을 시킴
+	}
+
+	time(&finish);//종료시점의 시간 저장
+
+	cout << "1을 100억 번 더하는 시간 : " << difftime(finish, start) << "초\n";
+	//difftime 반환값은 초 단위로 두 변수의 시간 차이다.
+
+	return 0;
+};
 
 
+//1을 100억 번 더하는 시간 : 25초
+//
 
 
 
