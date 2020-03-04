@@ -484,98 +484,584 @@ int main()
 
 
 
-000
-학습내용 :   이해하기;
+079
+학습내용 : enum 이해하기;
 
+#include <iostream>
 
+using namespace std;
 
+enum Status //상수 집합, 열거형
+{
+	normal = 0,
+	abnormal,      //1
+	disconnect = 100,
+	close          //101
+};//정수형 값을 가짐
 
+int main()
+{
+	Status number = close;
 
-000
-학습내용 :   이해하기;
+	if (number == Status::normal)
+		cout << "Status : normal" << endl;
+	else if (number == abnormal)
+		cout << "Status : abnormal" << endl;
+	else if (number == 101)
+		cout << "Status : disconnect" << endl;
+	else
+		cout << "Status : close" << endl;
 
+	return 0;
+}
+
+
+//Status : disconnect
+
+
+
+080
+학습내용 : enum class;
+
+#include <iostream>
+
+using namespace std;
 
+enum Status
+{
+	normal = 0,
+	abnormal,
+	disconnect = 100,
+	close
+};
+//enum class는 enum 요소들의 이름을 동일하게 사용할 수 있게 해준다.
+enum class MachineStatus : char //enum class는 char 자료형임을 알려줌, 디폴트는 int
+{
+	normal = 'n',
+	abnormal,
+	disconnect = 100,
+	close
+};
 
+int main()
+{
+	MachineStatus machine = MachineStatus::abnormal;
+	//abnormal은 기본 enum, MachineStatus::abnormal은 enum class, 같은 이름 사용 가능
 
+	if (machine == MachineStatus::normal)
+		cout << "Status : normal" << endl;
+	else if (machine == MachineStatus::abnormal)
+		cout << "Status : abnormal" << endl;
+	else if (machine == MachineStatus::disconnect)
+		cout << "Status : disconnect" << endl;
+	else
+		cout << "Status : close" << endl;
 
-000
-학습내용 :   이해하기;
+	cout << "machine : " << static_cast<int>(machine) << ", " << static_cast<char>(machine) << endl;
 
+	return 0;
+}
 
 
+//Status: abnormal
+//machine : 111, o
 
 
-000
-학습내용 :   이해하기;
 
+081
+학습내용 :  배열 초기값;
 
+#include <iostream>
 
+using namespace std;
 
+int main()
+{
+	int data1[3] = { 0, 1, 2 };
+	int data2[2][2]{ { 0, }, };
+	int data3[2][2];  //초기값 없어 쓰레기 값 저장
 
-000
-학습내용 :   이해하기;
+	cout << "== data1 ==" << endl;
+	for (int i = 0; i < 3; i++)
+		cout << "data1[" << i << "] = " << data1[i] << endl;
 
+	cout << endl << "== data2 ==" << endl;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+			cout << "data2[" << i << "][" << j << "] = "
+			<< data2[i][j] << endl;
+	}
 
+	cout << endl << "== data3 ==" << endl;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+			cout << "data3[" << i << "][" << j << "] = "
+			<< data3[i][j] << endl;
+	}
 
+	return 0;
+}
 
 
-000
-학습내용 :   이해하기;
+//== data1 ==
+//data1[0] = 0
+//data1[1] = 1
+//data1[2] = 2
+//
+//== data2 ==
+//data2[0][0] = 0
+//data2[0][1] = 0
+//data2[1][0] = 0
+//data2[1][1] = 0
+//
+//== data3 ==
+//data3[0][0] = -858993460
+//data3[0][1] = -858993460
+//data3[1][0] = -858993460
+//data3[1][1] = -858993460
+//
 
 
 
 
+082
+학습내용 : 1차원 배열;
 
-000
-학습내용 :   이해하기;
+#include <iostream>
 
+using namespace std;
 
+int main()
+{
+	int data1[3] = { 0, 1, 2 };
 
+	data1[0] += 10;
+	data1[1] = 100;
+	data1[2] -= 2;
 
+	cout << "== data1 ==" << endl;
+	for (int i = 0; i < 3; i++)
+		cout << "data1[" << i << "] = " << data1[i] << endl;
 
-000
-학습내용 :   이해하기;
+	return 0;
+}
 
+//== data1 ==
+//data1[0] = 10
+//data1[1] = 100
+//data1[2] = 0
 
 
 
 
-000
-학습내용 :   이해하기;
+083
+학습내용 : 함수에 배열 전달;
 
+#include <iostream>
 
+using namespace std;
 
+void Print1(int* arr)
+{
+	cout << "== Print1 ==" << endl;
+	cout << arr[0] << ", " << arr[1] << ", " << arr[2] << endl;
 
+	arr[1] = 1000;
+}
 
-000
-학습내용 :   이해하기;
+void Print2(int arr[])
+{
+	cout << "== Print2 ==" << endl;
+	cout << arr[0] << ", " << arr[1] << ", " << arr[2] << endl;
 
+	arr[2] = 2000;
+}
 
+int main()
+{
+	int data[3] = { 0, 1, 2 };
 
+	Print1(data);
+	Print2(data);
 
+	cout << "== 결과 ==" << endl;
+	cout << data[0] << ", " << data[1] << ", " << data[2] << endl;
 
-000
-학습내용 :   이해하기;
+	return 0;
+}
 
+//== Print1 ==
+//0, 1, 2
+//== Print2 ==
+//0, 1000, 2
+//== 결과 ==
+//0, 1000, 2000
 
 
 
+084
+학습내용 :  2차원 배열;
 
-000
-학습내용 :   이해하기;
+#include <iostream>
 
+using namespace std;
 
+int main()
+{
+	int data1[2][2] = { 1, 2, 3 };
+	int data2[2][3] = { { 1, } };
 
+	cout << "data1[0][0] = " << data1[0][0] << endl;
+	cout << "data1[0][1] = " << data1[0][1] << endl;
+	cout << "data1[1][0] = " << data1[1][0] << endl;
+	cout << "data1[1][1] = " << data1[1][1] << endl;
 
+	cout << endl;
+	cout << "data2[0][0] = " << data2[0][0] << endl;
+	cout << "data2[0][1] = " << data2[0][1] + 1 << endl;
+	cout << "data2[0][2] = " << data2[0][2] + 2 << endl;
+	cout << "data2[1][0] = " << data2[1][0] + 3 << endl;
+	cout << "data2[1][1] = " << data2[1][1] + 4 << endl;
+	cout << "data2[1][2] = " << data2[1][2] + 5 << endl;
 
-000
-학습내용 :   이해하기;
+	return 0;
+}
 
 
+//data1[0][0] = 1
+//data1[0][1] = 2
+//data1[1][0] = 3
+//data1[1][1] = 0
+//
+//data2[0][0] = 1
+//data2[0][1] = 1
+//data2[0][2] = 2
+//data2[1][0] = 3
+//data2[1][1] = 4
+//data2[1][2] = 5
 
 
 
-000
+085
+학습내용 : 2차원 배열을 함수 인자로 사용하기;
+#include <iostream>
+
+using namespace std;
+
+void Func1(int arr[2][2])// 직접 크기를 지정해 받을 수 있다. 포인터를 넘겨줌.
+{
+	arr[0][0] = 1000;
+	//1행 1열의 값을 100으로 변경
+}
+
+void Func2(int arr[][2], int row)//2차원 배열 행은 생략 가능, 행의 크기를 같이 넘겨줘야 한다.
+{
+	arr[row - 2][1] = 2000;
+}
+
+void Func3(int* arr, int row, int col)//2차원 배열을 포인터로 받기
+{
+	*((arr + row - 1) + col - 1) = 3000; //*((arr+1)+1), arr에서 2번째 이동한 주소
+
+}
+
+int main()
+{
+	int data[2][2]{ { 1, 2 },{ 3, 4 } };//2차원 배열 초기화
+	//int data[2][2]={ { 1, 2 },{ 3, 4 } };//
+
+	Func1(data);
+	Func2(data, 2);
+	Func3(*data, 2, 2);
+
+	cout << "== 결과 ==" << endl;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			cout << data[i][j] << endl;
+		}
+	}
+
+	return 0;
+}
+
+
+//== 결과 ==
+//1000
+//2000
+//3000
+//4
+
+
+
+
+
+
+086
+학습내용 : fill;
+
+#include <iostream>
+#include <vector>
+#include <algorithm>//fill
+
+using namespace std;
+
+int main()
+{
+	int data1[10]{ 0, };            //1차원 배열 0으로 초기화
+	fill(data1, data1 + 3, 10);     //인덱스 0,1,2에 10 저장
+	fill(data1 + 4, data1 + 8, 20); //[4]~[7]에 20 할당
+
+	cout << "== data1 결과 ==" << endl;
+
+	for (int i = 0; i < 10; i++)
+		cout << data1[i] << ", ";
+	//10, 10, 10, 0, 20, 20, 20, 20, 0, 0,
+	vector<int> data2({ 0, 1, 2, 3, 4, 5, 6, 7 });
+	fill(data2.begin(), data2.begin() + 3, 30);
+	//30, 30, 30, 3, 4, 5, 6, 7,
+	cout << endl << endl << "== data2 결과 ==" << endl;
+
+	for (int i = 0, size = data2.size(); i < size; i++)
+		cout << data2.at(i) << ", ";
+
+	return 0;
+}
+
+//== data1 결과 ==
+//10, 10, 10, 0, 20, 20, 20, 20, 0, 0,
+//
+//== data2 결과 ==
+//30, 30, 30, 3, 4, 5, 6, 7,
+
+
+
+087
+학습내용 : 배열 일부 변경하기;
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int data1[10]{ 0, };
+	fill_n(data1, 2, 10);
+	fill_n(data1 + 4, 3, 20);
+
+	cout << "== data1 결과 ==" << endl;
+
+	for (int i = 0; i < 10; i++)
+		cout << data1[i] << ", ";
+	//10, 10, 0, 0, 20, 20, 20, 0, 0, 0,
+	vector<int> data2({ 0, 1, 2, 3, 4, 5, 6, 7 });
+	fill_n(data2.begin(), data2.size() - 1, 30);
+	fill_n(data2.begin(), 4, 40);
+	//40, 40, 40, 40, 30, 30, 30, 7,
+	cout << endl << endl << "== data2 결과 ==" << endl;
+
+	for (int i = 0, size = data2.size(); i < size; i++)
+		cout << data2.at(i) << ", ";
+
+	return 0;
+
+
+}
+
+//
+//== data1 결과 ==
+//10, 10, 0, 0, 20, 20, 20, 0, 0, 0,
+//
+//== data2 결과 ==
+//40, 40, 40, 40, 30, 30, 30, 7,
+
+
+
+088
+학습내용 : 구조체 이해하기;
+//C++에서도 C언어처럼 구조체를 사용할 수 있다.
+//보통은 클래스를 만들어 사용할 것이다.
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Princess
+{
+	string name;
+	string father;
+	string birthday = "알 수 없음";
+} Goryeo[2];
+
+int main()
+{
+	Princess jungmyung;
+	jungmyung.name = "정명공주";
+	jungmyung.father = "조선 선조";
+	jungmyung.birthday = "1603년 6월 27일";
+
+	Goryeo[0].name = "선정왕후";
+	Goryeo[0].father = "고려 성종";
+	Goryeo[1].name = "효정공주";
+	Goryeo[1].father = "고려 현종";
+
+	cout << " == 조선 공주 == " << endl;
+	cout << jungmyung.name << endl;
+	cout << jungmyung.father << endl;
+	cout << jungmyung.birthday << endl;
+
+	cout << " == 고려 공주 == " << endl;
+	cout << Goryeo[0].name << endl;
+	cout << Goryeo[0].father << endl;
+	cout << Goryeo[0].birthday << endl << endl;
+	cout << Goryeo[1].name << endl;
+	cout << Goryeo[1].father << endl;
+	cout << Goryeo[1].birthday << endl;
+
+	return 0;
+}
+
+
+//== 조선 공주 ==
+//정명공주
+//조선 선조
+//1603년 6월 27일
+//== 고려 공주 ==
+//선정왕후
+//고려 성종
+//알 수 없음
+//
+//효정공주
+//고려 현종
+//알 수 없음
+
+
+
+
+
+089
+학습내용 : 구조체를 함수 인자로 사용;
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Princess
+{
+	string name;
+	string father;
+	string birthday;
+} jungso;
+
+void Print(Princess* who)
+{
+	cout << "jungso.name = " << who->name << endl;
+	cout << "jungso.father = " << who->father << endl;
+	cout << "jungso.birthday = " << who->birthday << endl;
+}
+
+int main()
+{
+	jungso.name = "정소공주";
+	jungso.father = "조선 태종";
+	jungso.birthday = "1412년";
+
+	Print(&jungso);
+
+	return 0;
+}
+//
+//jungso.name = 정소공주
+//jungso.father = 조선 태종
+//jungso.birthday = 1412년
+//
+
+
+
+
+
+090
+학습내용 : 구조체 초기화;
+
+#include <iostream>
+
+using namespace std;
+
+struct Data1
+{
+	Data1(int x) : number(x) {}
+	//구조체도 클래스 생성자처럼 선언과 초기화를 내부에서 할 수 있음.
+	int number;
+};
+
+struct Data2
+{
+	Data2()
+	{
+		number = 10;
+	}
+
+	int number;
+} data2;
+
+int main()
+{
+	Data1 data1(2);
+	cout << "Data1 number : " << data1.number << endl;
+	cout << "Data2 number : " << data2.number << endl;
+
+	return 0;
+}
+
+//Data1 number : 2
+//Data2 number : 10
+
+
+
+
+
+091
+학습내용 : 구조체 초기화 2;
+
+#include <iostream>
+
+using namespace std;
+
+struct Data1  //정수형 변수를 가진 구조체
+{
+	int number;
+};
+
+struct Data2  //구조체와 정수형 변수를 가진 구조체
+{
+	Data1 data1;
+
+	int number;
+} data2;
+
+int main()
+{
+	Data1 data1 = { }; //내부 변수들을 모두 초기화
+	Data2 data2{ data1, 10 };//순서대로 전달해야함. 멤버 변수들 순서대로 초기화됨
+
+	cout << "Data1 number : " << data2.data1.number << endl;
+	cout << "Data2 number : " << data2.number << endl;
+
+	return 0;
+}
+//
+//Data1 number : 0
+//Data2 number : 10
+
+
+
+
+093
 학습내용 :   이해하기;
 
 
