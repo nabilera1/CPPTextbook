@@ -1061,15 +1061,69 @@ int main()
 
 
 
+092
+학습내용 : 구조체 초기화 3;
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Info
+{
+	string country;
+
+	struct Who
+	{
+		string name;
+		string nickname;
+	} who;
+};
+
+int main()
+{
+	Info chuck = { "고려", { "장군 척준경", "소드마스터" } };
+	Info anjang = { "고구려", "안장왕 고흥안", "한주 사랑" };
+
+	cout << chuck.country << ", " << chuck.who.name << ", " << chuck.who.nickname << endl;
+	cout << anjang.country << ", " << anjang.who.name << ", " << anjang.who.nickname << endl;
+
+	return 0;
+}
+
+//고려, 장군 척준경, 소드마스터
+//고구려, 안장왕 고흥안, 한주 사랑
+
+/*
+
+//파일 입출력
+
+#include<fstream>
+using namespace std;
+int main()
+{
+	ofstream square_file;//std::ofstream
+	square_file.open("./square.txt");//Debug 폴더 실행파일 위치에 squart.txt 생성
+	for (int i = 0; i < 10; i++) {
+		square_file << i << "^2=" << i * i << endl;
+	}
+	square_file.close();
+
+}
+//square_file.open("../square.txt");
+//소스코드 있는 경로에 square.txt 저장됨
+
+//ofstream square_file("square.txt")8
+
+
+
+*/
+
+
+
+
 093
-학습내용 :   이해하기;
-
-
-
-
-
-000
-학습내용 :   이해하기;
+학습내용 : 파일 한 줄씩 읽기;
 
 
 
