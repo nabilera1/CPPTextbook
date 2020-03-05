@@ -1094,6 +1094,59 @@ int main()
 //고려, 장군 척준경, 소드마스터
 //고구려, 안장왕 고흥안, 한주 사랑
 
+
+
+
+
+093
+학습내용 : 파일 한 줄씩 읽기;
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ifstream read;
+
+	read.open("093.txt", ifstream::in);//ifstream::in 열기 모드, default, 생략가능
+	//visual studio 2019, Debug 폴더에 093.txt 파일이 위치해야 함.
+	//cpp로 만들어진 실행파일 exe는 Debug에 기본적으로 생성됨.
+
+	char line = read.get();//파일의 첫 문자 읽기
+
+	while (read.eof() == false)//End of File
+	{
+		cout << line;//1 char씩 출력
+
+		line = read.get();
+	}
+
+	cout << endl;
+
+	read.close();
+
+	return 0;
+}
+
+
+//093.txt 내용
+//bc2333 고조선 건국
+//bc238  부여 건국
+//bc57   신라 건국
+//bc37   고구려 건국
+//bc18   백제 건국
+//42     가야 건국
+//698    발해 건국
+//900    후백제 건국
+//901    후고구려 건국
+//918    고려 건국
+//1392   조선 건국
+//1948   대한민국 건국
+
+
+
+
 /*
 
 //파일 입출력
@@ -1122,22 +1175,51 @@ int main()
 
 
 
-093
+094
 학습내용 : 파일 한 줄씩 읽기;
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	ifstream file;
+	file.open("093.txt", ifstream::in);
+
+	string line;
+
+	while (getline(file, line))
+		cout << line << endl;
+
+	file.close();
+
+	return 0;
+}
+
+
+//bc2333 고조선 건국
+//bc238  부여 건국
+//bc57   신라 건국
+//bc37   고구려 건국
+//bc18   백제 건국
+//42     가야 건국
+//698    발해 건국
+//900    후백제 건국
+//901    후고구려 건국
+//918    고려 건국
+//1392   조선 건국
+//1948   대한민국 건국
 
 
 
 
-000
-학습내용 :   이해하기;
 
-
-
-
-
-000
-학습내용 :   이해하기;
+095
+학습내용 : 파일 내용 모두 읽기;
 
 
 
