@@ -1275,26 +1275,151 @@ int main()
 
 
 096
-학습내용rrfrㄱ김이완
-김이완
-김이완
-완
-완
-이완
-이완
-김이완
-김이완
-김이오나
-김이완
-김동균
-김이완김이완
-김이완
-김김김김김
-김]
+학습내용 : 파일 쓰기;
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	const string file_name = "096.txt";
+
+	ofstream file_out;
+	file_out.open(file_name, ifstream::out);//096.txt
+
+	file_out << "고구려 유리왕과 황조가" << endl;
+	file_out << "사랑의 아픔을 승화한 시" << endl;
+
+	file_out.close();
+
+	ifstream file_in;
+	file_in.open(file_name, ifstream::in);
+
+	string line;
+
+	while (getline(file_in, line))
+		cout << line << endl;
+
+	file_in.close();
+
+	return 0;
+}
+
+//096.txt 파일이 비주얼스튜디오 2019의 경우 Debug 폴더에 생성
+//고구려 유리왕과 황조가
+//사랑의 아픔을 승화한 시
+
+
+
+
 
 
 000
 학습내용 :   이해하기;
+
+
+
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
+
+
+
+
+
+000
+학습내용 :   이해하기;
+
 
 
 
