@@ -1318,107 +1318,92 @@ int main()
 
 
 
-000
-학습내용 :   이해하기;
+097
+학습내용 : 프로그램 실행 경로 파악하기;
+//experimental 찾을 수 없는 상황
+//참고 : https://en.cppreference.com/w/cpp/experimental
+//#include <experimental/filesystem>
+//using namespace std;
+//namespace fs = std::experimental::filesystem;
+//
+//온라인 컴파일러에서도 아래와 같은 에러 발생
+//Compilation failed due to following error(s).main.cpp:2 : 22 : fatal error : filesystem: No such file or directory
+//#include <filesystem>
 
+#include <iostream>
+#include <filesystem> 
 
+using namespace std;
+namespace fs = experimental::filesystem;
+//namespace 별도 선언, 아래처럼 줄여 사용 가능
+int main()
+{
+	cout << "프로젝트 폴더 : " << fs::current_path() << endl;
+	//현재 작업중인 폴더 출력, 빌드한 실행파일(exe)가 위치한 곳
+	return 0;
+}
 
 
+//프로젝트 폴더 : C:\Users\김동균\Source\Repos\nabilera1\CPPTextbook\cppLec0001\Debug
 
 
 
 
 
-000
-학습내용 :   이해하기;
 
+098
+학습내용 : 폴더 찾기;
 
+// experimental 에서 에러 발생
+#include <iostream>
+#include <filesystem>
 
+using namespace std;
+namespace fs = experimental::filesystem;
 
+int main()
+{
+	if (fs::exists("c:\\Target") == true)
+		cout << "폴더가 존재합니다" << endl;
+	else
+		cout << "폴더가 없습니다" << endl;
 
+	return 0;
+}
 
-000
-학습내용 :   이해하기;
 
+//폴더가 없습니다.
 
 
 
 
+099
+학습내용 : 하위 폴더 조회하기;
 
-000
-학습내용 :   이해하기;
+//조회할 폴더(디렉토리)를 변수에 설정
+//백슬래시(\)  한 개는 특수문자로 인식되기 때문에 경로 표현을 위해
+//백슬래시 두 개(\\) 사용
+//C#에서는 @를 붙여서 경로를 인식하는 등 언어마다 차이가 있다.
+//자료형 auto는 컴파일 단계에서 자료형을 정하는 것이다.
+//입력 자료형이 명확하지 않거나, 크기가 일정하지 않을 때에 사용할 수 있다.
+//filesystem의 directory_iterator 함수를 호출하여 인자로 받는 디렉토리의 처음과 끝을 조회하여
+//결과를 알려준다.
+#include <iostream>
+#include <filesystem>
+#include <string>
 
+using namespace std;
+namespace fs = experimental::filesystem;
 
+int main()
+{
+	string directory = "C:\\Program Files";
 
+	for (auto& name : fs::directory_iterator(directory))
+		std::cout << name << '\n';
 
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
-
-
-
-
-
-
-000
-학습내용 :   이해하기;
+	return 0;
+}
 
 
 
