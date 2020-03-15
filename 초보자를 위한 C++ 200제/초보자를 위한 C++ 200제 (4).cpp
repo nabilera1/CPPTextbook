@@ -1318,8 +1318,24 @@ int main()
 
 
 
+
 097
 학습내용 : 프로그램 실행 경로 파악하기;
+
+//C++17 표준 라이브러리의 파일 시스템 라이브러리 소개
+//C++14까지 C++ 표준 라이브러리에는 파일 입출력을 위한 수단은 있었지만 
+//파일 시스템을 위한 수단은 없었다. 
+//C++17에서 드디어 C++도 파일 시스템 라이브러리를 가지게 되었다.
+
+/*
+2011년 C++11에 boost 라이브러리가 포함됨
+이 때는 #include<boost/filesystem.hpp>를 추가해야 했음
+C++11 표준 이후 비주얼 스튜디오 2012 버전 이사에서는 별도의 설치 없이 사용 가능
+*/
+
+
+//#include <experimental/filesystem>
+
 //experimental 찾을 수 없는 상황
 //참고 : https://en.cppreference.com/w/cpp/experimental
 //#include <experimental/filesystem>
@@ -1407,6 +1423,106 @@ int main()
 
 
 
+
+
+
+
+100
+학습내용 : 폴더 생성, 복사, 삭제;
+//에러
+
+#include <iostream>
+#include <fstream>
+#include <experimental/filesystem>
+
+using namespace std;
+namespace fs = experimental::filesystem;
+
+int main()
+{
+	fs::create_directory("temp");
+	fs::copy("temp", "temp_copy");
+	fs::remove("temp");
+	fs::remove("temp_copy");
+
+	return 0;
+}
+
+
+
+
+
+
+
+101
+학습내용 :  파일 복사, 삭제;
+
+#include <iostream>
+#include <experimental/filesystem>
+#include <string>
+
+using namespace std;
+namespace fs = experimental::filesystem;
+
+int main()
+{
+	fs::copy("연개수영 전설.txt", "(복사)연개수영 전설.txt");
+	fs::remove("연개수영 전설.txt");
+
+	return 0;
+}
+
+
+
+
+
+
+
+102
+학습내용 :  파일 존재 여부;
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ifstream stream;
+	stream.open("C:\\BOOTNXT");
+
+	if (stream.good() == true)
+		cout << "파일이 존재합니다" << endl;
+	else
+		cout << "파일이 없습니다" << endl;
+
+	stream.close();
+
+	return 0;
+}
+
+//파일이 없습니다
+
+
+103
+학습내용 : 파일 크기 확인하기;
+//에러 발생
+
+#include <iostream>
+#include <experimental/filesystem>
+#include <string>
+
+using namespace std;
+namespace fs = experimental::filesystem;
+
+int main()
+{
+	int size = fs::file_size("연개수영 전설.txt");
+
+	cout << "파일 크기 : " << size << "바이트" << endl;
+
+	return 0;
+}
 
 
 

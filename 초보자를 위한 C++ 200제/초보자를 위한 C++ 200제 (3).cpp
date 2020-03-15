@@ -358,7 +358,7 @@ int main()
 
 
 
-000
+051
 학습내용 :날짜와 시간을 문자열 변환 이해하기;
 //visual studio 2019에서는 _CRT_SECURE_NO_WARNINGS를 사용
 //또는 #pragma warning(disable:4996)
@@ -396,6 +396,35 @@ int main()
 //현재 까지 흐른 초 수를 의미한다.
 //https://modoocode.com/113
 //시간 형식 지정자 https://modoocode.com/122
+
+
+
+//추가 코드 : 와이드 문자열
+#include <string>
+#include <vector>
+#include <iostream>
+
+void SendMessage(const std::wstring& name, int msg)
+{
+	std::wcout << L"Hello, " << name << L"! Count to " << msg << std::endl;
+}
+
+int main()
+{
+	std::vector<wchar_t> letters = { L'f', L'r', L'e', L'd', L' ', L's', L'm', L'i', L't', L'h' };
+	std::wstring name = L"";
+	std::vector<int> a(10);
+	std::wstring key = L"";
+
+	for (int i = 0; i < letters.size(); i++)
+	{
+		name += letters[i];
+		a[i] = i + 1;
+		SendMessage(name, a[i]);
+	}
+	std::wcin >> key;
+	return 0;
+}
 
 
 
