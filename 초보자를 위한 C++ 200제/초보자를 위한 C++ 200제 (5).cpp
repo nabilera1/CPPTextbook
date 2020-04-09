@@ -180,28 +180,130 @@ int main()
 
 
 107
-학습내용 :   이해하기;
+학습내용 : 클래스 default 생성자;
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Class1
+{
+public:
+	Class1() = default;
+	//생성자에 default를 대입하면 클래스 내부 변수를 모두 초기화
+public:
+	int number;
+	double prime;
+	string word;
+};
+
+class Class2
+{
+public:
+	Class2() { };
+
+public:
+	int number;
+	double prime;
+	string word;
+};
+
+int main()
+{
+	Class1* class1 = new Class1(); //메모리 힙 영역,  default 키워드를 사용한 생성자 부분
+	cout << "Class1 : " << class1->number << ", " << class1->prime << ", " << class1->word << endl;
+
+	Class2* class2 = new Class2();
+	cout << "Class2 : " << class2->number << ", " << class2->prime << ", " << class2->word << endl;
+
+	return 0;
+}
+//
+//Class1: 0, 0,
+//Class2 : -842150451, -6.27744e+66,
+
+
+
+
+
+108
+학습내용 : 클래스 생성자 초기화 리스트;
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class TmpClass
+{
+public:
+	TmpClass() : number1(10), number2(20), name("나운 : 문자명왕 이름") {}
+	//생성자 초기화 리스트에서 생성자 호출시점에 변수 값을 설정
+
+	void Print()
+	{
+		cout << number1 << ", " << number2 << ", " << number3 << ", " << name << endl;
+	}
+
+private:
+	int number1 = 1;          //생성자에서 다시 할당 가능, 지금 값은 무시
+	const int number2 = 2;
+	static const int number3 = 3;
+	string name = "조다 : 장수왕 아들";
+};
+
+int main()
+{
+	TmpClass tc;  //스택영역에 생성, new는 힙 영역
+	tc.Print();
+
+	return 0;
+}
+
+//10, 20, 3, 나운 : 문자명왕 이름
 
 
 
 
 
 
-
-000
-학습내용 :   이해하기;
-
+109
+학습내용 : 클래스 소멸자 정의; 
 
 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class TempClass
+{
+public:
+	TempClass()
+	{
+		cout << "생성자 호출" << endl;
+	};
+
+	~TempClass() //소멸자도 클래스 이름과 같고, 물결 무늬(tilde)를 사용
+	{
+		cout << "소멸자 호출" << endl;
+	}
+};
+
+int main()
+{
+	TempClass* temp_class = new TempClass(); //힙영역에 생성
+	//객체를 new로 생성 후 delete로 삭제하고 포인터는 null로 만들기 (공식처럼 생각)
+	delete temp_class;
+	temp_class = nullptr;
+
+	return 0;
+}
 
 
-
-
-000
-학습내용 :   이해하기;
-
-
-
+//생성자 호출
+//소멸자 호출
 
 
 
